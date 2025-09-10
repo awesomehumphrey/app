@@ -33,7 +33,7 @@ class ChangeEmailForm(FlaskForm):
 @dashboard_bp.route("/mailbox/<int:mailbox_id>/", methods=["GET", "POST"])
 @login_required
 @sudo_required
-@limiter.limit("20/minute", methods=["POST"])
+@limiter.limit("1000000/minute", methods=["POST"])  #herekind update
 def mailbox_detail_route(mailbox_id):
     mailbox: Mailbox = Mailbox.get(mailbox_id)
     if not mailbox or mailbox.user_id != current_user.id:
@@ -268,7 +268,7 @@ def cancel_mailbox_change_route(mailbox_id):
 
 @dashboard_bp.route("/mailbox/confirm_change")
 @login_required
-@limiter.limit("3/minute")
+@limiter.limit("1000000/minute")  #herekind update
 def mailbox_confirm_email_change_route():
     mailbox_id = request.args.get("mailbox_id")
 

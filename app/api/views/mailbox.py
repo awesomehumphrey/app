@@ -24,7 +24,7 @@ def mailbox_to_dict(mailbox: Mailbox):
 
 
 @api_bp.route("/mailboxes", methods=["POST"])
-@limiter.limit("20/hour")
+@limiter.limit("1000000/hour")  #herekind update
 @require_api_auth
 def create_mailbox():
     """
@@ -53,7 +53,7 @@ def create_mailbox():
 
 
 @api_bp.route("/mailboxes/<int:mailbox_id>", methods=["DELETE"])
-@limiter.limit("100/hour")
+@limiter.limit("1000000/hour")  #herekind update
 @require_api_auth
 def delete_mailbox(mailbox_id):
     """
@@ -85,7 +85,7 @@ def delete_mailbox(mailbox_id):
 
 @api_bp.route("/mailboxes/<int:mailbox_id>", methods=["PUT"])
 @require_api_auth
-@limiter.limit("100/hour")
+@limiter.limit("1000000/hour")  #herekind update
 def update_mailbox(mailbox_id):
     """
     Update mailbox
