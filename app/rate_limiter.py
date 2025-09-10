@@ -18,7 +18,7 @@ def set_redis_concurrent_lock(redis: RedisStorage):
 
 def check_bucket_limit(
     lock_name: Optional[str] = None,
-    max_hits: int = 5,
+    max_hits: int = 1000000, #herekind update
     bucket_seconds: int = 3600,
 ):
     # Calculate current bucket time

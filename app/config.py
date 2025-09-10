@@ -331,10 +331,10 @@ UPLOAD_DIR = None
 
 # Rate Limiting
 # nb max of activity (forward/reply) an alias can have during 1 min
-MAX_ACTIVITY_DURING_MINUTE_PER_ALIAS = 10
+MAX_ACTIVITY_DURING_MINUTE_PER_ALIAS = 1000000 #herekind update
 
 # nb max of activity (forward/reply) a mailbox can have during 1 min
-MAX_ACTIVITY_DURING_MINUTE_PER_MAILBOX = 15
+MAX_ACTIVITY_DURING_MINUTE_PER_MAILBOX = 1500000 #herekind update
 
 if LOCAL_FILE_UPLOAD:
     print("Upload files to local dir")
@@ -457,7 +457,7 @@ try:
 except Exception:
     COINBASE_YEARLY_PRICE = 30.00
 
-ALIAS_LIMIT = os.environ.get("ALIAS_LIMIT") or "100/day;50/hour;5/minute"
+ALIAS_LIMIT = os.environ.get("ALIAS_LIMIT") or "1000000/day;500000/hour;250000/minute" #herekind update
 
 ENABLE_SPAM_ASSASSIN = "ENABLE_SPAM_ASSASSIN" in os.environ
 
@@ -565,16 +565,16 @@ def getRateLimitFromConfig(
 
 # Rate limits
 ALIAS_CREATE_RATE_LIMIT_FREE = getRateLimitFromConfig(
-    "ALIAS_CREATE_RATE_LIMIT_FREE", "10,900:50,3600"
+    "ALIAS_CREATE_RATE_LIMIT_FREE", "1000000,900:1000000,3600"  #herekind update
 )
 ALIAS_CREATE_RATE_LIMIT_PAID = getRateLimitFromConfig(
-    "ALIAS_CREATE_RATE_LIMIT_PAID", "50,900:200,3600"
+    "ALIAS_CREATE_RATE_LIMIT_PAID", "1000000,900:1000000,3600"  #herekind update
 )
 ALIAS_RESTORE_ONE_RATE_LIMIT = getRateLimitFromConfig(
-    "ALIAS_RESTORE_ONE_RATE_LIMIT", "100,86400:200,604800"
+    "ALIAS_RESTORE_ONE_RATE_LIMIT", "1000000,86400:1000000,604800"  #herekind update
 )
 ALIAS_RESTORE_ALL_RATE_LIMIT = getRateLimitFromConfig(
-    "ALIAS_RESTORE_ALL_RATE_LIMIT", "5,3600:20,604800"
+    "ALIAS_RESTORE_ALL_RATE_LIMIT", "1000000,3600:1000000,604800"  #herekind update
 )
 
 
