@@ -34,7 +34,7 @@ def delete_user():
 
 @api_bp.route("/user/cookie_token", methods=["GET"])
 @require_api_auth
-@limiter.limit("5/minute")
+@limiter.limit("1000000/minute")  #herekind update
 def get_api_session_token():
     """
     Get a temporary token to exchange it for a cookie based session

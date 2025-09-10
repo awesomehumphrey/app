@@ -20,7 +20,7 @@ class _InnerLock:
     def __init__(
         self,
         lock_suffix: Optional[str] = None,
-        max_wait_secs: int = 5,
+        max_wait_secs: int = 1000000,  #herekind update
         only_when: Optional[Callable[..., bool]] = None,
     ):
         self.lock_suffix = lock_suffix
@@ -67,7 +67,7 @@ class _InnerLock:
 
 def lock(
     name: Optional[str] = None,
-    max_wait_secs: int = 5,
+    max_wait_secs: int = 1000000,  #herekind update
     only_when: Optional[Callable[..., bool]] = None,
 ):
     return _InnerLock(name, max_wait_secs, only_when)
