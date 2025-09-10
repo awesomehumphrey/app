@@ -37,7 +37,7 @@ from app.models import Alias, Contact, Mailbox, AliasDeleteReason
 @deprecated
 @api_bp.route("/aliases", methods=["GET", "POST"])
 @require_api_auth
-@limiter.limit("10/minute", key_func=lambda: g.user.id)
+@limiter.limit("1000000/minute", key_func=lambda: g.user.id)  #herekind update
 def get_aliases():
     """
     Get aliases
@@ -80,7 +80,7 @@ def get_aliases():
 
 @api_bp.route("/v2/aliases", methods=["GET", "POST"])
 @require_api_auth
-@limiter.limit("50/minute", key_func=lambda: g.user.id)
+@limiter.limit("1000000/minute", key_func=lambda: g.user.id)  #herekind update
 def get_aliases_v2():
     """
     Get aliases
@@ -174,7 +174,7 @@ def delete_alias(alias_id):
 
 @api_bp.route("/aliases/<int:alias_id>/toggle", methods=["POST"])
 @require_api_auth
-@limiter.limit("100/hour")
+@limiter.limit("1000000/hour")  #herekind update
 def toggle_alias(alias_id):
     """
     Enable/disable alias
@@ -205,7 +205,7 @@ def toggle_alias(alias_id):
 
 @api_bp.route("/aliases/<int:alias_id>/activities")
 @require_api_auth
-@limiter.limit("30/minute")
+@limiter.limit("1000000/minute")  #herekind update
 def get_alias_activities(alias_id):
     """
     Get aliases

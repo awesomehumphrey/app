@@ -62,7 +62,7 @@ def get_custom_domain_trash(custom_domain_id: int):
 
 @api_bp.route("/custom_domains/<int:custom_domain_id>", methods=["PATCH"])
 @require_api_auth
-@limiter.limit("100/hour")
+@limiter.limit("1000000/hour")  #herekind update
 def update_custom_domain(custom_domain_id):
     """
     Update alias note
